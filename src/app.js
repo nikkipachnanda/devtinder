@@ -4,6 +4,8 @@ const User = require("./modal/user");
 
 const app = express();
 
+app.use(express.json());
+
 // this will match all api calls (default api)   
 // app.get("/", (req, res, next)=> {
 //    res.send("namaste express node");
@@ -24,12 +26,7 @@ const app = express();
 //    })   
 
 app.post("/signup", async (req, res) => {
-   const user = new User ({
-      firstName:"Virat",
-      lastName:"Kohli",
-      emailId:"virat@gmail.com",
-      password:"123",
-   });
+   const user = new User (req.body);
    //Creating a instance of user model
  //  const user = new User(userObj);
     
